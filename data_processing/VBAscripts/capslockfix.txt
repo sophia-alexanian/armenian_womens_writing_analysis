@@ -1,0 +1,8 @@
+Sub FormatNonCaps()
+    Dim cell As Range
+    For Each cell In Selection
+        If cell.Value <> "N/A" And Not IsEmpty(cell.Value) Then
+            cell.Value = LCase(cell.Value)
+        End If
+    Next cell
+End Sub
