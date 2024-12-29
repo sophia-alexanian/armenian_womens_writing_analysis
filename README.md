@@ -32,7 +32,7 @@ The Yerevan-based [EVN Report](https://evnreport.com/about-us/) is a fairly new 
 
 In an attempt to create balance between political affiliations (since the Mirror-Spectator had a more thorough public online archive than the Armenian Weekly) and broaden some of the geographic diversity, I also scraped the opinion section of [Horizon Weekly](https://horizonweekly.ca/), a trilingual Canada-based newspaper that is the official publication of Canada's ARF Central Committee. The opinion section featured writing by individual contributors, which was what was needed for my purposes.
 
-Webscrapers were created for each website using the following Python libraries: BeautifulSoup (an HTML parser), Newspaper3k (a library specifically for scraping news articles), requests (to send HTTP requests), and selenium (for navigating websites with unclear pagination patterns).    
+Webscrapers were created for each website using the following Python libraries: BeautifulSoup (an HTML parser), Newspaper3k (a library specifically for scraping news articles), requests (to send HTTP requests), and selenium (for navigating websites with inconsistent formatting patterns).    
 
 Headers and random time delays were employed to simulate human browser requests and prevent rate limiting or being blocked.   
 
