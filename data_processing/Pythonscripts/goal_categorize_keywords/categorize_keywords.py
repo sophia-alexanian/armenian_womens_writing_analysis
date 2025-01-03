@@ -3,6 +3,10 @@ import pandas as pd
 from collections import defaultdict
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
+import tensorflow as tf
+import os
+
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0" #to deal with warnings on my machine
 
 # Load transformer model for embeddings
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
@@ -18,12 +22,12 @@ categories = {
     "Education": ["school", "graduation", "curriculum", "youth", "graduates", "children", "learn", "literacy", "education", "writing", "reading", "language", "teacher", "math", "teach", "students", "study", "university"],
     "Nationalities": ["armenian", "lebanese", "polish", "spanish", "slavic", "ukrainian", "turkish", "turkic", "syrian", "azeri", "azerbaijani", "israeli", "palestinian", "russian", "assyrians", "french", "german", "greek", "european", "american", "iranian", "swedish", "swiss"],
     "Cities": ["gyumri", "boston", "damascus", "chicago", "ani", "van", "beirut", "aleppo", "yerevan", "Baku", "paris", "berlin", "moscow", "toronto", "watertown", "tel aviv", "jerusalem", "haifa", "nyc", "los angeles", "glendale"],
-    "Countries": ["armenia", "spain", "poland", "lebanon", "ukraine", "syria", "turkey", "azerbaijan", "Azerbaijan", "canada", "australia", "israel", "palestine", "germany", "france", "russia", "china", "usa", "america", "artsakh", "georgia", "sweden", "greece", "abkhazia", "kosovo"],
+    "Countries": ["armenia", "spain", "poland", "lebanon", "ukraine", "artsakh", "syria", "lebanon", "syria", "turkey", "azerbaijan", "Azerbaijan", "canada", "australia", "israel", "palestine", "germany", "france", "russia", "china", "usa", "america", "artsakh", "georgia", "sweden", "greece", "abkhazia", "kosovo"],
     "Genocide": ["genocide", "deportees", "1915", "recognition", "Talaat Pasha", "massacres", "martyrs", "holocaust"],
     "Religion": ["church", "faith", "catholicos", "holiness", "prophet", "orthodox", "secular", "atheist", "lent", "diocese", "archbishop", "prayer", "Christianity", "Islam", "Christian", "Jew", "ministry", "Catholic", "apostolic", "Jesus", "Christ", "cross", "missionaries", "spiritual", "holy", "buddhist", "biblical", "worship", "gospel", "sermon", "reverend", "friar", "pastor", "evangelical","Christmas", "Easter", "Saint"],
     "Culture": ["poetry", "art", "exhibits", "heritage", "cultural", "books", "musuem", "painting", "sculpture", "culture", "literature", "dance", "music", "song", "book", "comedy", "performance", "humor"],
     "Blockade and Conflict": ["blockade", "trauma", "aggression", "ceasefire", "munitions", "bombs", "missile", "corridor", "military", "troops", "soldiers", "weapons", "conflict", "war", "battle", "peace", "shootings", "wounded", "starvation", "refugees"],
-    "Social Issues": ["charity", "humanitarian", "aid", "volunteer", "fundraiser", "organizes", "awareness", "activism", "lobbying", "activists", "organizing", "lobbyist"],
+    "Social Issues": ["charity", "donor", "sponsor", "rally", "humanitarian", "aid", "volunteer", "fundraiser", "organizes", "awareness", "activism", "lobbying", "activists", "organizing", "lobbyist"],
     "Social Services": ["healthcare", "housing", "education", "public transit", "welfare", "subsidies", "childcare", "fares", "transporatation", "roads"],
     "Economic Terms": ["tax", "labor", "industry", "tech", "technology", "tourism", "manufacturing", "layoffs", "recession", "cuts", "employees", "unemployment", "unions", "workers", "gdp", "debt", "bank", "dram", "economic", "jobs", "employment", "spending", "budget", "dollar", "revenue", "productivity", "fund", "market", "economy", "economist", "economics", "trade"],
     "Gender Issues": ["menstrual", "girls", "family", "disability", "adoption", "infants", "babies", "teenagers", "gay", "lgbtq", "homophobia", "queer", "domestic", "pregnancy", "maternity", "feminine", "woman", "mother", "motherinlaw", "infertility"],
@@ -36,7 +40,7 @@ category_vectors = {
 }
 
 # Similarity threshold for categorizing a keyword
-SIMILARITY_THRESHOLD = 0.34  
+SIMILARITY_THRESHOLD = 0.43 
 
 def categorize_keywords(keywords, category_vectors, similarity_threshold=SIMILARITY_THRESHOLD):
     """
@@ -76,7 +80,7 @@ keywords = df["Keywords"].dropna().tolist()  # Remove NaN values and convert to 
 categorized_keywords = categorize_keywords(keywords, category_vectors)
 
 # Define output directory and ensure it exists
-output_dir = "./output4/"
+output_dir = "./output6/"
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
