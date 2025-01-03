@@ -1,11 +1,11 @@
-import spacy
 import os
 import pandas as pd
 from collections import defaultdict
 from sklearn.metrics.pairwise import cosine_similarity
+from sentence_transformers import SentenceTransformer
 
-# Load spaCy model
-nlp = spacy.load("en_core_web_md")  
+# Load transformer model for embeddings
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 # Define categories with seed words
 categories = {
@@ -29,21 +29,38 @@ categories = {
     "Women's Issues": ["menstrual", "domestic", "pregnancy", "maternity", "feminine", "woman", "mother"],
 }
 
-# Preprocess seed words to compute category vectors
-category_vectors = {cat: nlp(" ".join(words)).vector for cat, words in categories.items()}
+# Precompute category embeddings
+category_vectors = {
+    cat: model.encode(" ".join(words), convert_to_tensor=True)
+    for cat, words in categories.items()
+}
 
-def categorize_keywords(keywords, category_vectors):
+# Similarity threshold for categorizing a keyword
+SIMILARITY_THRESHOLD = 0.5  
+
+def categorize_keywords(keywords, category_vectors, similarity_threshold=SIMILARITY_THRESHOLD):
+    """
+    Categorizes keywords based on semantic similarity with category vectors.
+    If similarity is below the threshold, the keyword will be categorized as "Uncategorized".
+    """
     categorized = defaultdict(list)
     for keyword in keywords:
-        keyword_vector = nlp(keyword).vector.reshape(1, -1)  # Ensure it's 2D
+        keyword_vector = model.encode(keyword, convert_to_tensor=True)
         similarities = {
-            cat: cosine_similarity(keyword_vector, category_vector.reshape(1, -1))[0][0]
+            cat: cosine_similarity(keyword_vector.cpu().numpy().reshape(1, -1),
+                                   category_vector.cpu().numpy().reshape(1, -1))[0][0]
             for cat, category_vector in category_vectors.items()
         }
         best_match = max(similarities, key=similarities.get)
-        categorized[best_match].append(keyword)
+        best_similarity = similarities[best_match]
+        
+        # If the similarity is below the threshold, categorize as "Uncategorized"
+        if best_similarity < similarity_threshold:
+            categorized["Uncategorized"].append(keyword)
+        else:
+            categorized[best_match].append(keyword)
+    
     return categorized
-
 
 # Load input spreadsheet
 input_file = "Normalized_Armenian_Womens_Articles.xlsx"
@@ -53,13 +70,13 @@ df = pd.read_excel(input_file)
 if "Keywords" not in df.columns:
     raise ValueError("Input spreadsheet must contain a 'Keywords' column.")
 
-keywords = df["Keywords"].dropna().tolist()  # Remove any NaN values and convert to list
+keywords = df["Keywords"].dropna().tolist()  # Remove NaN values and convert to list
 
 # Categorize keywords
 categorized_keywords = categorize_keywords(keywords, category_vectors)
 
 # Define output directory and ensure it exists
-output_dir = "./output/"
+output_dir = "./output2/"
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
@@ -78,4 +95,3 @@ for category, words in categorized_keywords.items():
         print(f"Category '{category}' saved to {output_file}")
     except Exception as e:
         print(f"Failed to save category '{category}' to {output_file}: {e}")
-
