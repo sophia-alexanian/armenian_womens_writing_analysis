@@ -1,26 +1,32 @@
 import spacy
+import os
 import pandas as pd
 from collections import defaultdict
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Load spaCy model
-nlp = spacy.load("en_core_web_md")  # Use a medium model for better accuracy
+nlp = spacy.load("en_core_web_md")  
 
 # Define categories with seed words
 categories = {
-    "Geographic Regions": ["Paris", "USA", "Europe", "Asia"],
+    "Geographic Regions": ["Mediterranean", "Europe", "Middle East", "Caucasus"],
     "Political Terms": ["democracy", "election", "policy", "government"],
-    "Politicians": ["Trump", "Biden", "Obama", "Macron"],
-    "Alliances": ["Trump", "Biden", "Obama", "Macron"],
-    "Food": ["Trump", "Biden", "Obama", "Macron"],
-    "Education": ["Trump", "Biden", "Obama", "Macron"],
-    "Social Issues": ["Trump", "Biden", "Obama", "Macron"],
-    "Cities": ["Trump", "Biden", "Obama", "Macron"],
-    "Countries": ["Trump", "Biden", "Obama", "Macron"],
-    "Genocide": ["Trump", "Biden", "Obama", "Macron"],
-    "Religion": ["Trump", "Biden", "Obama", "Macron"],
-    "Culture": ["Trump", "Biden", "Obama", "Macron"],
-    "Blockade": ["Trump", "Biden", "Obama", "Macron"],
+    "Politicians": ["Donald Trump", "Trump", "Joe Biden", "Biden", "Macron", "Emmanuel Macron", "Nikol Pashinyan", "Pashinyan", "Ilham Aliyev", "Putin"],
+    "Alliances": ["EU", "EEU", "CSTO", "NATO"],
+    "Organizations": ["ARS", "AGBU", "ARF", "AYF", "ANCA"],
+    "Food": ["manti", "cucumber", "apricot", "liquor", "bread", "cheese", "lettuce", "recipe"],
+    "Education": ["school", "learn", "literacy", "education", "writing", "reading", "language"],
+    "Nationalities": ["Armenian", "Azeri", "Azerbaijani", "Israeli", "Russian", "French", "German"],
+    "Cities": ["Gyumri", "Yerevan", "Baku", "Paris", "Berlin", "Moscow", "Toronto"],
+    "Countries": ["Armenia", "Azerbaijan", "Canada", "France", "Russia", "China", "USA", "America"],
+    "Genocide": ["genocide", "1915", "recognition", "Talaat Pasha"],
+    "Religion": ["church", "diocese", "archbishop", "prayer", "Christianity", "Islam", "Christian", "Jew"],
+    "Culture": ["poetry", "art", "culture", "literature", "dance", "music", "song", "book"],
+    "Blockade": ["blockade", "corridor"],
+    "Social Issues": ["violence", "charity", "humanitarian", "aid"],
+    "Social Services": ["healthcare", "education", "public transit", "welfare", "subsidies"],
+    "Economic Terms": ["tax", "economic", "jobs", "spending", "budget", "dollar"],
+    "Women's Issues": ["menstrual", "domestic", "pregnancy", "maternity", "feminine", "woman", "mother"],
 }
 
 # Preprocess seed words to compute category vectors
@@ -40,22 +46,36 @@ def categorize_keywords(keywords, category_vectors):
 
 
 # Load input spreadsheet
-input_file = "input.xlsx"
+input_file = "Normalized_Armenian_Womens_Articles.xlsx"
 df = pd.read_excel(input_file)
 
 # Check for "Keyword" column
-if "Keyword" not in df.columns:
-    raise ValueError("Input spreadsheet must contain a 'Keyword' column.")
+if "Keywords" not in df.columns:
+    raise ValueError("Input spreadsheet must contain a 'Keywords' column.")
 
-keywords = df["Keyword"].dropna().tolist()  # Remove any NaN values and convert to list
+keywords = df["Keywords"].dropna().tolist()  # Remove any NaN values and convert to list
 
 # Categorize keywords
 categorized_keywords = categorize_keywords(keywords, category_vectors)
 
-# Save each category as a separate spreadsheet
+# Define output directory and ensure it exists
 output_dir = "./output/"
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+# Save each category as a separate spreadsheet
 for category, words in categorized_keywords.items():
-    output_file = f"{output_dir}{category.replace(' ', '_')}.xlsx"
-    category_df = pd.DataFrame(words, columns=["Keyword"])
-    category_df.to_excel(output_file, index=False)
-    print(f"Category '{category}' saved to {output_file}")
+    # Find rows in the original DataFrame matching the keywords
+    filtered_rows = df[df["Keywords"].isin(words)]
+    
+    # Prepare output file name
+    sanitized_category = category.replace(' ', '_').replace('/', '_')
+    output_file = os.path.join(output_dir, f"{sanitized_category}.xlsx")
+    
+    # Save the filtered rows
+    try:
+        filtered_rows.to_excel(output_file, index=False)
+        print(f"Category '{category}' saved to {output_file}")
+    except Exception as e:
+        print(f"Failed to save category '{category}' to {output_file}: {e}")
+
