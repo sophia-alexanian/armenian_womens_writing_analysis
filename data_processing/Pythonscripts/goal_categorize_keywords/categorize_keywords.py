@@ -4,7 +4,6 @@ from collections import defaultdict
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 import tensorflow as tf
-import os
 
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0" #to deal with warnings on my machine
 
