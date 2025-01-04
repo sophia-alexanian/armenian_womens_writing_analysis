@@ -4,6 +4,8 @@
 
 ![Sankey chart for data flow](assets/Data_Flowchart.png)
 
+![Word Cloud](assets/armenian_women_wordcloud.png)
+
 [Back to Top](#armenian-womens-writing-analysis)
 
 ## What did English-language Armenian woman newspaper writers write about in the early 21st century?
