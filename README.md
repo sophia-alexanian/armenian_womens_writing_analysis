@@ -76,8 +76,10 @@ Through my own testing, I realized that GPT models, when prompted correctly, can
 I first extracted all the unique first names from my dataset. Then, using few shot prompting/in-context learning, I gendered all the unique names and created a "dictionary" with which to gender the broader dataset. Through minimizing the number of tokens used, I was able to gender my entire dataset for under $1 (USD, using conversion rate at the time of project, under $1.44 CAD). This cost (less than a cup of coffee at Tim Horton's!) included testing stages and final implementation.
 
 ![API spending by project](assets/spend_by_project.png)
+Chart 1: API spending by project
 
 ![API spending by type of model used](assets/spend_by_model.png)
+Chart 2: API spending by type of model used
 
 Now, I had a set of article data by likely Armenian woman writers. I could begin visualizing this data to identify keyword trends.
 
