@@ -58,7 +58,28 @@ Additionally, I needed the standardize the way authors' names were listed. Many 
 
 ## Determining Woman Authors Using AI 
 
-content to be added
+I would first like to address that this project has some elements that could be assumed to be problematic:   
+        -> it assumes newspaper contributors fall into binary gender identities ("man" or "woman"), therefore failing to account for the possibility of contributors with non-binary gender identities.                  
+        -> it assumes that the gender identity of newspaper authors is correlated with the commonly associated gender of their first names, therefore failing to account for gender non-conforming naming conventions (including gender neutral names like "Sam" and using first initials like "C. S. Lewis").     
+        -> it only accounts for woman writers where the author is credited by names. Women who wrote submissions as part of collective statements of organizations or as part of editorial teams are not included in this analysis.
+
+However, given that there is an academic tradition of "women's studies" and a large enough dataset that anomalies would not overwhelm, I still thought it was worthwhile to analyze the writing of *likely* Armenian woman writers.
+
+My approach to determining gender was balancing two trade-offs: financial cost and accuracy.
+
+Initially, I wanted to use this gendering API: https://gender-api.com/en/. They claim to have support for Canada, the USA, and Armenia, which are the main locations of the writers in my dataset.
+
+Through testing their tool, I found that while it had over 95% accuracy for standard, anglophone North American names, it had less than 50% accuracy for ethnic Armenian names (likely because the model was trained on a biased sampling of data). Despite the poor accuracy, gendering my dataset would cost anywhere from $10 - $20 (CAD), depending on how I approached it.
+
+Through my own testing, I realized that GPT models, when prompted correctly, can gender Armenian names with over 95% accuracy. I decided to use OpenAI's API for gendering the dataset using a chat model.
+
+I first extracted all the unique first names from my dataset. Then, using few shot prompting/in-context learning, I gendered all the unique names and created a "dictionary" with which to gender the broader dataset. Through minimizing the number of tokens used, I was able to gender my entire dataset for under $1 (USD, using conversion rate at the time of project, under $1.44 CAD). This cost (less than a cup of coffee at Tim Horton's!) included testing stages and final implementation.
+
+![API spending by project](assets/spend_by_project.png)
+
+![API spending by type of model used](assets/spend_by_model.png)
+
+Now, I had a set of article data by likely Armenian woman writers. I could begin visualizing this data to identify keyword trends.
 
 [Back to Top](#armenian-womens-writing-analysis)
 
@@ -85,7 +106,7 @@ A BIG thank you to [Khasir Hean](https://www.linkedin.com/in/khasir-hean/), a da
 
 Thank you to [Emerson Schryver](https://www.linkedin.com/in/eschry/), a fellow UofT student and CSSU regular, for helping me approach debugging one of the scrapers.
 
-I also extend gratitude to [Robert Zupancic](https://www.linkedin.com/in/robert-zupancic/), fellow UofT engineering student (and my ECE241 lab partner), for doing a final code review and flagging outstanding issues.
+I also extend gratitude to [Robert Zupancic](https://www.linkedin.com/in/robert-zupancic/), a fellow UofT engineering student (and my ECE241 lab partner), for doing a final code review.
 
 P.S. Robert and I created a piano and drum kit simulator for FPGA using Verilog for our final ECE241 project. If you're interested in seeing my work in a hardware description language (as opposed to a high-level programming language), feel free to check out our (censored for academic integrity purposes) work [here](https://github.com/RoZ4/Pianissimo-for-the-FPGA).
 
