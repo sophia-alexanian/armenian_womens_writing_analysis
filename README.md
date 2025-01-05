@@ -10,7 +10,7 @@
 
 ## What did English-language Armenian woman newspaper writers write about in the early 21st century?
 
-As a monthly contributor for a bilingual Armenian newspaper in Toronto who covered Dr. Victoria Rowe's PhD dissertation on Armenian woman writers in the late 19th and early 20th centuries (published at the University of Toronto in the year 2000 and available [here](https://utoronto.scholaris.ca/items/03f3f131-4d35-4027-a2fa-ec87ad406335)), I was curious about the patterns in Armenian women's writing in the 21st century.
+As a monthly contributor for a bilingual Armenian newspaper in Toronto, I interviewed Dr. Victoria Rowe talking about her PhD dissertation on Armenian woman writers in the late 19th and early 20th centuries (published at the University of Toronto in the year 2000 and available [here](https://utoronto.scholaris.ca/items/03f3f131-4d35-4027-a2fa-ec87ad406335)). After our conversations, I was curious about the patterns in Armenian women's writing in the early 21st century.
 
 Since I am an English-language Armenian woman newspaper writer, I decided to narrow the scope of my analysis to my counterparts primarily based in Canada, the US, and Armenia.
 
@@ -18,9 +18,9 @@ This project consisted of several stages:
 - scraping data from a representative sample of popular Armenian news sites (read about [here](#data-scraping))
 - data cleaning and pre-processing to ensure standardized, uniformly formatted outputs (read about [here](#data-cleaning))
 - identifying (likely) women writers (read about [here](#determining-woman-authors-using-ai))
-- data visualizations (read about [here](#data-visualization))
+- data categorization and visualization (read about [here](#data-categorization-and-visualization))
 
-The dashboard visualizing the data can be accessed here (link to come). Feel free to observe patterns yourself. I have committed to writing a Torontohye article with my own conclusions, publish date TBD.
+The Tableau story visualizing the data can be accessed here (link to come). Feel free to observe patterns yourself. I have committed to writing a Torontohye article with my own conclusions, publish date TBD.
 
 [Back to Top](#armenian-womens-writing-analysis)
 
@@ -63,7 +63,7 @@ Additionally, I needed the standardize the way authors' names were listed. Many 
 I would first like to address the potentially problematic elements of this project:     
 - it assumes newspaper contributors fall into binary gender identities ("man" or "woman"), therefore failing to account for the possibility of contributors with non-binary gender identities.                  
 - it assumes that the gender identity of newspaper authors is correlated with the commonly associated gender of their first names, therefore failing to account for gender non-conforming naming conventions (including gender neutral names like "Sam" and using first initials like "C. S. Lewis").     
-- it only accounts for woman writers where the author is credited by names. Women who wrote submissions as part of collective statements of organizations or as part of editorial teams are not included in this analysis.
+- it only accounts for woman writers where the author is credited by name. Women who wrote submissions as part of collective statements of organizations or as part of editorial teams are not included in this analysis.
 
 However, given that there is an academic tradition of "women's studies" and a large enough dataset that anomalies would not overwhelm, I still thought it was worthwhile to analyze the writing of *likely* Armenian woman writers.
 
@@ -87,7 +87,7 @@ Now, I had a set of article data by likely Armenian woman writers. I could begin
 
 [Back to Top](#armenian-womens-writing-analysis)
 
-## Data Visualization 
+## Data Categorization and Visualization 
 
 content to be added
 
