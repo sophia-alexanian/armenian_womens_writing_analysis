@@ -60,10 +60,10 @@ Additionally, I needed the standardize the way authors' names were listed. Many 
 
 ## Determining Woman Authors Using AI 
 
-I would first like to address the potentially problematic elements of this project:   
-        -> it assumes newspaper contributors fall into binary gender identities ("man" or "woman"), therefore failing to account for the possibility of contributors with non-binary gender identities.                  
-        -> it assumes that the gender identity of newspaper authors is correlated with the commonly associated gender of their first names, therefore failing to account for gender non-conforming naming conventions (including gender neutral names like "Sam" and using first initials like "C. S. Lewis").     
-        -> it only accounts for woman writers where the author is credited by names. Women who wrote submissions as part of collective statements of organizations or as part of editorial teams are not included in this analysis.
+I would first like to address the potentially problematic elements of this project:     
+- it assumes newspaper contributors fall into binary gender identities ("man" or "woman"), therefore failing to account for the possibility of contributors with non-binary gender identities.                  
+- it assumes that the gender identity of newspaper authors is correlated with the commonly associated gender of their first names, therefore failing to account for gender non-conforming naming conventions (including gender neutral names like "Sam" and using first initials like "C. S. Lewis").     
+- it only accounts for woman writers where the author is credited by names. Women who wrote submissions as part of collective statements of organizations or as part of editorial teams are not included in this analysis.
 
 However, given that there is an academic tradition of "women's studies" and a large enough dataset that anomalies would not overwhelm, I still thought it was worthwhile to analyze the writing of *likely* Armenian woman writers.
 
