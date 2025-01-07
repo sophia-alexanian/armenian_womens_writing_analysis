@@ -97,7 +97,7 @@ Using the SentenceTransformers framework for natural language processing (NLP) f
 
 I then visualized each category using Tableau. This allowed me to see both the trend in overall use of category keywords year over and year, and the different keywords used each year. I have began interpreting some of the results in my Tableau story [here]((https://public.tableau.com/shared/XTMNWXW2J?:display_count=n&:origin=viz_share_link)).
 
-I am looking forward to sharing my learnings for this project in Torontohye. 
+I am looking forward to sharing my learnings from this project in Torontohye. 
 
 [Back to Top](#armenian-womens-writing-analysis)
 
