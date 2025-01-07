@@ -1,6 +1,6 @@
 # Armenian Women's Writing Analysis   
 
-## High-Level Overview of Data
+## High-Level Overview of Dataset
 
 ![Sankey chart for data flow](assets/Data_Flowchart.png)
 
@@ -10,7 +10,7 @@
 
 ## What did English-language Armenian woman newspaper writers write about in the early 21st century?
 
-As a monthly contributor for a bilingual Armenian newspaper in Toronto, I interviewed Dr. Victoria Rowe talking about her PhD dissertation on Armenian woman writers in the late 19th and early 20th centuries (published at the University of Toronto in the year 2000 and available [here](https://utoronto.scholaris.ca/items/03f3f131-4d35-4027-a2fa-ec87ad406335)). After our conversations, I was curious about the patterns in Armenian women's writing in the early 21st century.
+As a monthly contributor for a bilingual Armenian newspaper in Toronto, I interviewed Dr. Victoria Rowe talking about her PhD dissertation on Armenian woman writers in the late 19th and early 20th centuries. Rowe's disseration was published at the University of Toronto in the year 2000 and available [here](https://utoronto.scholaris.ca/items/03f3f131-4d35-4027-a2fa-ec87ad406335). After our conversations, I was curious about the patterns in Armenian women's writing in the early 21st century.
 
 Since I am an English-language Armenian woman newspaper writer, I decided to narrow the scope of my analysis to my counterparts primarily based in Canada, the US, and Armenia.
 
@@ -89,7 +89,15 @@ Now, I had a set of article data by likely Armenian woman writers. I could begin
 
 ## Data Categorization and Visualization 
 
-content to be added
+Once I had a set of article data by likely Armenian woman writers, I normalized it to having one keyword per line. I then began analyzing the keywords.
+
+I employed a word cloud to easily visualize major keywords/themes. However, I was not satisfied with that level of analysis. I decided to look at the most frequently occuring keywords, and determine several categories to sort the keywords into for deeper analysis of what women were writing about when they discussed geographical locations, socio-political issues, and cultural matters.
+
+Using the SentenceTransformers framework for natural language processing (NLP) from Hugging Face, I experimented with setting seed words for each category and a similarity threshhold to allow for sorting the keywords into a category most similar to them. Iterating on my learnings each time, I reached a point where there was accurate and meaningful categorization.
+
+I then visualized each category using Tableau. This allowed me to see both the trend in overall use of category keywords year over and year, and the different keywords used each year. I have began interpreting some of the results in my Tableau story [here]((https://public.tableau.com/shared/XTMNWXW2J?:display_count=n&:origin=viz_share_link)).
+
+I am looking forward to sharing my learnings for this project in Torontohye. 
 
 [Back to Top](#armenian-womens-writing-analysis)
 
