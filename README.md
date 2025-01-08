@@ -3,8 +3,10 @@
 ## High-Level Overview of Dataset
 
 ![Sankey chart for data flow](assets/Data_Flowchart.png)
+Figure 1: Shows how many articles were scraped from each news website, and what number of articles had a female contributor credited.
 
 ![Word Cloud](assets/armenian_women_wordcloud.png)
+Figure 2: Wordcloud of the most common keywords in Armenian women's articles.
 
 [Back to Top](#armenian-womens-writing-analysis)
 
