@@ -95,7 +95,7 @@ I employed a word cloud to easily visualize major keywords/themes. However, I wa
 
 Using the SentenceTransformers framework for natural language processing (NLP) from Hugging Face, I experimented with setting seed words for each category and a similarity threshhold to allow for sorting the keywords into a category most similar to them. Iterating on my learnings each time, I reached a point where there was accurate and meaningful categorization.
 
-I then visualized each category using Tableau. This allowed me to see both the trend in overall use of category keywords year over and year, and the different keywords used each year. I have began interpreting some of the results in my Tableau story [here]((https://public.tableau.com/shared/XTMNWXW2J?:display_count=n&:origin=viz_share_link)).
+I then visualized each category using Tableau. This allowed me to see both the trend in overall use of category keywords year over year, and the different keywords used in each category. I have began interpreting some of the results in my Tableau story [here]((https://public.tableau.com/shared/XTMNWXW2J?:display_count=n&:origin=viz_share_link)).
 
 I am looking forward to sharing my learnings from this project in Torontohye. 
 
