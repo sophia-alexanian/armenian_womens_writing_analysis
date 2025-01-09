@@ -22,7 +22,7 @@ This project consisted of several stages:
 - identifying (likely) women writers (read about [here](#determining-woman-authors-using-ai))
 - data categorization and visualization (read about [here](#data-categorization-and-visualization))
 
-The Tableau story visualizing the data can be accessed here ([link](https://public.tableau.com/shared/XTMNWXW2J?:display_count=n&:origin=viz_share_link)). Feel free to observe patterns yourself. I have committed to writing a Torontohye article with my own conclusions, publish date TBD.
+The Tableau story visualizing the data can be accessed here ([link](https://public.tableau.com/shared/DDMWMJSRC?:display_count=n&:origin=viz_share_link)). Feel free to observe patterns yourself. I have committed to writing a Torontohye article with my own conclusions, publish date TBD.
 
 [Back to Top](#armenian-womens-writing-analysis)
 
