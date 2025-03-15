@@ -122,7 +122,5 @@ Thank you to [Emerson Schryver](https://www.linkedin.com/in/eschry/), a fellow U
 
 I also extend gratitude to [Robert Zupancic](https://www.linkedin.com/in/robert-zupancic/), a fellow UofT engineering student (and my ECE241 lab partner), for doing a final code review.
 
-P.S. Robert and I created a piano and drum kit simulator for FPGA using Verilog for our final ECE241 project. If you're interested in seeing my work in a hardware description language (as opposed to a high-level programming language), feel free to check out our (censored for academic integrity purposes) work [here](https://github.com/RoZ4/Pianissimo-for-the-FPGA).
-
 [Back to Top](#armenian-womens-writing-analysis)
 
