@@ -22,7 +22,7 @@ This project consisted of several stages:
 - identifying (likely) women writers (read about [here](#determining-woman-authors-using-ai))
 - data categorization and visualization (read about [here](#data-categorization-and-visualization))
 
-The Tableau story visualizing the data can be accessed here ([link](https://public.tableau.com/shared/DDMWMJSRC?:display_count=n&:origin=viz_share_link)). Feel free to observe patterns yourself. I have committed to writing a Torontohye article with my own conclusions, publish date TBD.
+The Tableau story visualizing the data can be accessed here ([link](https://public.tableau.com/shared/DDMWMJSRC?:display_count=n&:origin=viz_share_link)). Feel free to observe patterns yourself. I wrote an article for Torontohye in the April 2025 issue with my own takeaways and calls to action, which can be found here ([link](https://issuu.com/torontohye/docs/torontohye_212/21)).
 
 [Back to Top](#armenian-womens-writing-analysis)
 
@@ -99,7 +99,7 @@ Using the SentenceTransformers framework for natural language processing (NLP) f
 
 I then visualized each category using Tableau. This allowed me to see both the trend in overall use of category keywords year over year, and the different keywords used in each category. I have began interpreting some of the results in my Tableau story [here](https://public.tableau.com/shared/XTMNWXW2J?:display_count=n&:origin=viz_share_link).
 
-I am looking forward to sharing my learnings from this project in Torontohye. 
+Finally, I collaborated with the editor at Torontohye Monthly, discussing the best way to communicate these findings to a non-technical audience. The result is ([this article](https://issuu.com/torontohye/docs/torontohye_212/21)).
 
 [Back to Top](#armenian-womens-writing-analysis)
 
